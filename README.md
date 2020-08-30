@@ -24,6 +24,8 @@ You can visit `localhost:8080`
 Answer of question 2 can be found under src/main/java/com/question2 and src/test/com/pointr/question2
 
 ### Question 3
+Answer of question 3 can be found in Question3.md file.
 
-Answer of question 3 can be found in Questioln3.md file. 
+ ### Bonus Question
+ Answer of bonus question can be found in BonusQuestion.md
 
