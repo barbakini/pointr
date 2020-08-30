@@ -35,7 +35,7 @@ public class Question2Tests {
         }
 
         for (int i = 0; i < rolls.length; i++) {
-            assertThat(rolls[i]).isBetween(7000, 13000);
+            assertThat(rolls[i]).isBetween(9000, 11000);
         }
 
     }*/
