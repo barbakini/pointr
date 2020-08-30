@@ -4,11 +4,11 @@
   "description": "pointr challenge assigment",
   "repository": {
     "type": "git",
-    "url": "git@github.com:spring-guides/tut-react-and-spring-data-rest.git"
+    "url": "git@github.com:barbakini/pointr.git"
   },
   "author": "Atill Akif Barbak",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
+  "homepage": "https://github.com/barbakini/pointr",
   "dependencies": {
     "axios": "^0.20.0",
     "bootstrap": "4.1.3",
