@@ -1,4 +1,4 @@
-package com.example.pointr.controller;
+package com.pointr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

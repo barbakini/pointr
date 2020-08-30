@@ -1,4 +1,4 @@
-package com.example.pointr.domain;
+package com.pointr.domain;
 
 import lombok.*;
 

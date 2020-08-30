@@ -1,6 +1,6 @@
-package com.example.pointr.repository;
+package com.pointr.repository;
 
-import com.example.pointr.domain.City;
+import com.pointr.domain.City;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CityRepository extends CrudRepository<City, Integer> {

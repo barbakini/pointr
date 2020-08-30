@@ -1,4 +1,4 @@
-package com.example.pointr.question2;
+package com.pointr.question2;
 
 public class Question2 {
     private static long divider = System.currentTimeMillis() % 1000000;

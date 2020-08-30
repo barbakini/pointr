@@ -1,9 +1,9 @@
-package com.example.pointr;
+package com.pointr;
 
-import com.example.pointr.domain.City;
-import com.example.pointr.domain.WeatherForecast;
-import com.example.pointr.repository.CityRepository;
-import com.example.pointr.repository.WeatherForecastRepository;
+import com.pointr.domain.City;
+import com.pointr.domain.WeatherForecast;
+import com.pointr.repository.CityRepository;
+import com.pointr.repository.WeatherForecastRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
-package com.example.pointr.repository;
+package com.pointr.repository;
 
-import com.example.pointr.domain.WeatherForecast;
+import com.pointr.domain.WeatherForecast;
 import org.springframework.data.repository.CrudRepository;
 
 public interface WeatherForecastRepository extends CrudRepository<WeatherForecast, Integer> {
