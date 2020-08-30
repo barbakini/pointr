@@ -1,0 +1,34 @@
+{
+  "name": "pointr",
+  "version": "0.1.0",
+  "description": "pointr challenge assigment",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:spring-guides/tut-react-and-spring-data-rest.git"
+  },
+  "author": "Atill Akif Barbak",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bootstrap": "4.1.3",
+    "react": "^16.6.0",
+    "react-cookie": "3.0.4",
+    "react-dom": "^16.6.0",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "2.1.0",
+    "reactstrap": "6.5.0"
+  },
+  "scripts": {
+    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+  },
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
