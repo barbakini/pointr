@@ -55,7 +55,7 @@ const App = () => {
                 {windiestForecast ? <WeatherForecast backgroundColor={"sienna"} title={"Windiest City"} weatherForecast={windiestForecast}/> : <h3>Loading...</h3>}
             </div>
             <div style={{display:"flex", justifyContent:"center"}}>
-                {cities && <ForecastTable cities={cities}></ForecastTable>}
+                {cities.length && <ForecastTable cities={cities}></ForecastTable>}
             </div>
         </div>
     ) : (<div><h2>Web Socket is connecting, please wait..</h2></div>)
