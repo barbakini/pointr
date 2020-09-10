@@ -21,6 +21,8 @@ public class WeatherForecast {
 
     private Integer cityId;
 
+    private String cityName;
+
     private LocalDateTime forecastTime;
 
     private Double temperature;

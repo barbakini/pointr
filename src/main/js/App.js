@@ -1,40 +1,65 @@
 'use strict';
 
 import 'regenerator-runtime/runtime'
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import WeatherForecast from "./WeatherForecast";
+import stompClient from "./SocketUtil";
+import ForecastTable from "./ForecastTable";
+
 
 const App = () => {
     const [cities, setCities] = useState([]);
-    const [selectedCity, setSelectedCity] = useState(null);
+    const [socketConnected, setSocketConnected] = useState(false);
+    const [hottestForecast, setHottestForecast] = useState(null);
+    const [coldestForecast, setColdestForecast] = useState(null);
+    const [windiestForecast, setWindiestForecast] = useState(null);
 
-    useEffect( () => {
-        (async function fetchCities() {
-            const resp = await axios.get("api/cities");
+    useEffect(() => {
+        axios.get("api/cities").then((resp) => {
             setCities(resp.data._embedded.cities);
-        })();
+        });
+        stompClient.connect({}, () => {
+            setSocketConnected(true);
+            stompClient.subscribe('/topic/hottest-city', (data) => {
+                const forecast = JSON.parse(data.body);
+                handleHottestForecast(forecast);
+            });
+            stompClient.subscribe('/topic/coldest-city', (data) => {
+                const forecast = JSON.parse(data.body);
+                handleColdestForecast(forecast);
+            });
+            stompClient.subscribe('/topic/windiest-city', (data) => {
+                const forecast = JSON.parse(data.body);
+                handleWindiestForecast(forecast);
+            });
+        });
     }, []);
 
-    const handleCityChange = useCallback((event) => {
-        const city = cities.find(city => city.id.toString() === event.target.value.toString());
-        setSelectedCity(city);
+    const handleHottestForecast = useCallback((hottestForecast) => {
+        setHottestForecast(hottestForecast);
+    });
+    const handleColdestForecast = useCallback((coldestForecast) => {
+        setColdestForecast(coldestForecast);
+    });
+    const handleWindiestForecast = useCallback((windiestForecast) => {
+        setWindiestForecast(windiestForecast);
     });
 
-    return (
+    return socketConnected ? (
         <div>
-            <div><h1>Select a City to Get Weather Forecast</h1>
-                <select value={selectedCity ? selectedCity.id : -1}
-                        onChange={handleCityChange}>
-                    <option key="-1" value={-1}>Select a city</option>
-                    {cities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}
-                </select>
+            <div style={{display:"flex", flexDirection:"row", justifyContent:"space-around"}}>
+                {hottestForecast ? <WeatherForecast backgroundColor={"crimson"} title={"Hottest City"} weatherForecast={hottestForecast}/> : <h3>Loading...</h3>}
+                {coldestForecast ? <WeatherForecast backgroundColor={"aqua"} title={"Coldest City"} weatherForecast={coldestForecast}/> : <h3>Loading...</h3>}
+                {windiestForecast ? <WeatherForecast backgroundColor={"sienna"} title={"Windiest City"} weatherForecast={windiestForecast}/> : <h3>Loading...</h3>}
             </div>
-            <WeatherForecast selectedCity={selectedCity} />
+            <div style={{display:"flex", justifyContent:"center"}}>
+                {cities && <ForecastTable cities={cities}></ForecastTable>}
+            </div>
         </div>
-    )
-}
+    ) : (<div><h2>Web Socket is connecting, please wait..</h2></div>)
+};
 
 ReactDOM.render(
     <App/>,
